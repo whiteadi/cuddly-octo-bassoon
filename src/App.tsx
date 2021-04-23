@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useFetch } from './hooks';
+import GridListBar from './components/GridListBar';
 import './App.css';
 
-function App() {
+const App = () => {
+  const url: string =
+    'https://raw.githubusercontent.com/XiteTV/frontend-coding-exercise/main/data/dataset.json';
+
+  const { status, data, error } = useFetch(url);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {status === 'error' && <div>{error}</div>}
+      {status === 'fetching' && <div className="loading"></div>}
+      {status === 'fetched' && data && data.videos && (
+        <>
+          <GridListBar genres={data.genres} videos={data.videos} />
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default App;
