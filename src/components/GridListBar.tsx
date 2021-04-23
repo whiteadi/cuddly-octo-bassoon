@@ -23,10 +23,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface VideoProps {
-  genres: {
-    id: number;
-    name: string;
-  }[];
   videos: {
     id: number;
     artist: string;
@@ -37,7 +33,7 @@ interface VideoProps {
   }[];
 }
 
-const GridListBar: React.FC<VideoProps> = ({ genres, videos }: VideoProps) => {
+const GridListBar: React.FC<VideoProps> = ({ videos }: VideoProps) => {
   const classes = useStyles();
 
   const theme = useTheme();
