@@ -104,6 +104,7 @@ const Search: React.FC<VideoProps> = ({ genres, videos }: VideoProps) => {
             setSelectedYear(selected.value);
           }
         }}
+        placeholder="Select an year..."
       />
       <Select
         isMulti
@@ -112,6 +113,7 @@ const Search: React.FC<VideoProps> = ({ genres, videos }: VideoProps) => {
         // @ts-ignore
         options={genresFilter}
         onChange={onChange}
+        placeholder="Select a genre..."
       />
       <GridListBar videos={filteredVideos} />
     </>
